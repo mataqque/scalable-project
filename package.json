@@ -1,0 +1,71 @@
+{
+	"name": "infinix-frontend",
+	"private": true,
+	"version": "latest",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"preview": "vite preview",
+		"format": "prettier --write .",
+		"lint": "eslint ./src",
+		"test": "vitest",
+		"coverage": "vitest run --coverage",
+		"prepare": "husky install",
+		"husky": "npx husky add .husky/commit-msg 'npx --no -- commitlint --edit ${1}'"
+	},
+	"proxy": "http://localhost:5000/",
+	"dependencies": {
+		"@material-ui/core": "^4.12.4",
+		"@mui/material": "^5.10.16",
+		"@reduxjs/toolkit": "^1.9.1",
+		"@testing-library/jest-dom": "^5.16.5",
+		"@testing-library/react": "^13.4.0",
+		"array-move": "^4.0.0",
+		"axios": "^1.2.0",
+		"formik": "^2.2.9",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-dropzone": "^14.2.3",
+		"react-helmet-async": "^1.3.0",
+		"react-lottie": "^1.2.3",
+		"react-redux": "^8.0.5",
+		"react-router-dom": "^6.4.4",
+		"react-sortable-hoc": "^2.0.0",
+		"react-toastify": "^9.1.1",
+		"redux-thunk": "^2.4.2",
+		"rsuite": "^5.23.0",
+		"sanitize-html-react": "^1.13.0",
+		"vite-plugin-require": "^1.1.10",
+		"web-vitals": "^3.1.0",
+		"yup": "^0.32.11"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^17.3.0",
+		"@commitlint/config-conventional": "^17.3.0",
+		"@types/react": "^18.0.24",
+		"@types/react-dom": "^18.0.8",
+		"@typescript-eslint/eslint-plugin": "^5.0.0",
+		"@vitejs/plugin-react": "^2.2.0",
+		"eslint": "^8.0.1",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-config-standard-with-typescript": "^23.0.0",
+		"eslint-plugin-hexagonal-architecture": "^1.0.3",
+		"eslint-plugin-import": "^2.25.2",
+		"eslint-plugin-n": "^15.0.0",
+		"eslint-plugin-promise": "^6.0.0",
+		"eslint-plugin-react": "^7.31.11",
+		"husky": "^8.0.2",
+		"node-sass": "^8.0.0",
+		"prettier": "^2.8.0",
+		"sass": "^1.56.1",
+		"typescript": "*",
+		"vite": "^3.2.3",
+		"vite-plugin-sass-dts": "^1.2.5",
+		"vitest": "^0.25.3"
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	}
+}

@@ -1,6 +1,7 @@
 import './assets/scss/index.scss';
-import React from 'react';
+import 'tailwindcss/tailwind.css';
 import RoutesDom from './router';
+import { StyledEngineProvider } from '@mui/material/styles';
 import { createRoot } from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 import { Provider } from 'react-redux';
@@ -10,11 +11,13 @@ const rootElement = document.getElementById('root')!;
 const root = createRoot(rootElement);
 
 root.render(
-	<React.StrictMode>
+	<Provider store={store}>
 		<HelmetProvider>
-			<Provider store={store}>
+			<StyledEngineProvider injectFirst>
 				<RoutesDom />
-			</Provider>
+			</StyledEngineProvider>
 		</HelmetProvider>
-	</React.StrictMode>
+	</Provider>
+	// <React.StrictMode>
+	// </React.StrictMode>
 );

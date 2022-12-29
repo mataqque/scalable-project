@@ -1,7 +1,14 @@
 import React from 'react';
 import { Formik } from 'formik';
 
-export const FormContainer = ({ initialValues, validationSchema, onSubmit, children }: any) => {
+interface FormProps {
+	initialValues: object;
+	validationSchema: any;
+	onSubmit: any;
+	children: any;
+}
+
+export const FormContainer = ({ initialValues, validationSchema, onSubmit, children }: FormProps) => {
 	return (
 		<Formik enableReinitialize initialValues={initialValues} validate={validate(validationSchema)} onSubmit={onSubmit}>
 			{children}
@@ -24,13 +31,44 @@ export default function validate(getValidationSchema: any) {
 export const handleChecked = (e: any, form: any) => {
 	form.setFieldValue(e.target.name, e.target.checked);
 };
-
-export const setInputProps = (name: any, classes = '', { errors, touched, handleChange, handleBlur }: any) => {
+function handleBlur2(e: any, form: any) {
+	form.setFieldTouched(e.target.name, true);
+}
+const handleValid = (e: any) => {
+	let delay = setInterval(() => {
+		if (!e.target.classList.contains('--invalid')) {
+			e.target.classList.add('--valid');
+		}
+		clearInterval(delay);
+	}, 20);
+};
+export const setInputProps = (name: string, classes: string, { errors, touched, handleChange, handleBlur }: any) => {
 	return {
 		name: name,
 		className: `${classes} ${errors[name] && touched[name] ? '--invalid' : ''}`,
-		onChange: handleChange,
-		// onBlur: handleBlur
+		onChange: (e: any) => {
+			handleChange(e);
+			handleValid(e);
+		},
+		onBlur: (e: any) => {
+			handleBlur(e);
+			handleValid(e);
+		},
+	};
+};
+
+export const setInputPropsSelect = (name: string, classes: string, { errors, touched, handleChange, handleBlur }: any, callback: Function) => {
+	return {
+		name: name,
+		className: `${classes} ${errors[name] && touched[name] ? '--invalid' : ''}`,
+		onChange: (e: any) => {
+			handleChange(e);
+			handleValid(e);
+		},
+		onBlur: (e: any) => {
+			handleBlur(e);
+			handleValid(e);
+		},
 	};
 };
 

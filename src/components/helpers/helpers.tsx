@@ -11,7 +11,7 @@ interface TypeGeneric {
 	number: string;
 	string: string;
 }
-export const generateId = ({ type }: { type: string }) => {
+export const generateId = ({ type }: { type: string }): number | string => {
 	const typeid: TypeGeneric = {
 		number: new Date().getTime().toString(),
 		string: Math.random().toString(36).substr(2, 18),
@@ -21,13 +21,12 @@ export const generateId = ({ type }: { type: string }) => {
 };
 
 export const generateUrl = (props: any) => {
-	console.log(props);
 	let path = window.location.origin;
 	let url = path + props.dir + '/' + props.file_name;
 	return url;
 };
 
-export const convertDate = (date: Date) => {
+export const convertToDate = (date: Date) => {
 	let date_ = new Date(date);
 	return date_.toLocaleDateString('es-Es', { year: 'numeric', month: 'long', day: 'numeric' });
 };
@@ -78,4 +77,51 @@ export const generatePath = (...props: any) => {
 		path += '/' + item.replace(/\//, '');
 	});
 	return path;
+};
+
+export const bytesToSize = (bytes: number): string => {
+	const sizes = ['Bytes', 'Kb', 'Mb', 'gb', 'Tb'];
+	if (bytes === 0) {
+		return '0 Byte';
+	}
+	const i = Math.floor(Math.log(bytes) / Math.log(1024));
+	return `${Math.round(bytes / Math.pow(1024, i))} ${sizes[i]}`;
+};
+
+export const verifyExtension = (file: any) => {
+	let extension = file.file_name.split('.').pop();
+	if (extension == 'pdf') {
+		return 'file.png';
+	} else if (extension == 'mp4') {
+		return 'video.png';
+	} else if (extension == 'mp3') {
+		return 'file.png';
+	} else if (
+		extension == 'webp' ||
+		extension == 'jpg' ||
+		extension == 'png' ||
+		extension == 'jpeg' ||
+		extension == 'gif' ||
+		extension == 'svg' ||
+		extension == 'PNG' ||
+		extension == 'JPG' ||
+		extension == 'JPEG' ||
+		extension == 'GIF' ||
+		extension == 'SVG'
+	) {
+		return file.compress.length > 0 ? file.compress : file.file_name;
+	} else {
+		return 'file.png';
+	}
+};
+
+export const getCheckables = () => {
+	const checkboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[type="checkbox"]');
+	const values = [];
+	for (let i = 0; i < checkboxes.length; i++) {
+		if (checkboxes[i].checked) {
+			values.push(checkboxes[i].value);
+		}
+	}
+	return values;
 };

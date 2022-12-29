@@ -1,19 +1,34 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { URL_BASE_API_BACKEND, URL_BASE_BACKEND } from '../config';
 
 // Define a service using a base URL and expected endpoints
 export const authApi = createApi({
-	reducerPath: 'AuthApi',
+	reducerPath: 'authApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://localhost:5000/pages/',
+		baseUrl: URL_BASE_API_BACKEND,
 	}),
 	endpoints: builder => ({
-		AuthApi: builder.query({
-			query: () => `getPages`,
-		}),
-		deletePage: builder.mutation({
-			query: id => ({
-				url: `deletePage/${id}`,
+		verifyToken: builder.mutation({
+			query: ({ id, ...patch }) => ({
+				url: `/`,
 				method: 'POST',
+				body: patch,
+			}),
+		}),
+	}),
+});
+
+export const account = createApi({
+	reducerPath: 'account',
+	baseQuery: fetchBaseQuery({
+		baseUrl: URL_BASE_API_BACKEND,
+	}),
+	endpoints: builder => ({
+		login: builder.mutation({
+			query: ({ id, ...patch }) => ({
+				url: `login`,
+				method: 'POST',
+				body: patch,
 			}),
 		}),
 	}),
@@ -21,4 +36,5 @@ export const authApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useAuthApiQuery, useDeletePageMutation } = authApi;
+export const { useVerifyTokenMutation } = authApi;
+export const { useLoginMutation } = account;

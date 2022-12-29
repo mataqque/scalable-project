@@ -1,13 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = {
+interface InitialStateType {
+	data: string;
+}
+
+const initialState: InitialStateType = {
 	data: '',
 };
 export const headerSlice = createSlice({
 	name: 'headerSlice',
 	initialState,
 	reducers: {
-		setData: (state, action) => {
+		setData: (state: InitialStateType, action: PayloadAction<string>) => {
 			state.data = action.payload;
 		},
 	},

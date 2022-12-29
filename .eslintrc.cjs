@@ -30,6 +30,11 @@ module.exports = {
   ],
   rules: {
     // "no-tabs": ["error", { "allowIndentationTabs": true }],
-    "@typescript-eslint/no-non-null-assertion": "off"
-  }
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/no-require-imports": "off"
+  },
 }

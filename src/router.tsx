@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import { PrivateRoutes } from './routes/PrivateRoutes';
 import { PublicRoutes } from './routes/PublicRoutes';
 import { Header } from './components/helpers/header/header';
+import { verifyCredential } from './components/TypeRoute/domain/verifyCredentials.service';
 
 export default function RoutesDom(props: any): JSX.Element {
 	return (
@@ -16,13 +17,12 @@ export default function RoutesDom(props: any): JSX.Element {
 				<Route path='/account' element={<PublicRoute>{PublicRoutes.Account}</PublicRoute>}>
 					<Route path='login' element={PublicRoutes.Login} />
 					<Route path='register' element={PublicRoutes.Register} />
-					<Route path='recovery' element={PublicRoutes.Recovery} />
+					<Route path='password-recovery' element={PublicRoutes.Recovery} />
 				</Route>
+				<Route path='/components' element={<PublicRoute>{PublicRoutes.Components}</PublicRoute>} />
 			</Routes>
 			<Routes>
-				<Route path='/dashboard' element={<PrivateRoute>{PrivateRoutes.Dashboard}</PrivateRoute>}>
-					{/* <Route path='/' element={<PrivateRoute>{PrivateRoutes.home}</PrivateRoute>} /> */}
-				</Route>
+				<Route path='/privated' element={<PrivateRoute verifyCredential={''}>{PrivateRoutes.Dashboard}</PrivateRoute>}></Route>
 			</Routes>
 		</Router>
 	);

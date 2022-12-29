@@ -1,86 +1,76 @@
-import { FormEventHandler, useRef, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LoginSchema } from '../../../components/helpers/common/forms/constraints/ValidatonSchemas';
-import { FormContainer, setInputProps } from '../../../components/helpers/common/forms/Form';
+import { FormContainer } from '../../../components/helpers/common/forms/Form';
+import { InputText, InputTextPassword } from '../../../components/UI/inputs/inputs';
+import { useLoginMutation } from '../../../store/apis/authApi.api';
+import { saveToken } from '../../../store/globlalSlice/auth/auth.slice';
+import { ILogin } from './interfaces/login.interface';
+import { ParametersForm } from '../interfaces/interface';
+import { ButtonSubmit } from './components/ButtonSubmit.styled';
+import eye from '../../../assets/images/Account/icons/eye-svg.svg?url';
+import { LinkComponentRegister, ShowErrorLogin } from '../components/linkcomponent';
+import { FormStyled } from '../../../components/UI/GlobalComponents/Form/form';
 
-export const Login = () => {
+export const Login: React.FunctionComponent = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const [iconShowPassword, SetIconShowPassword] = useState(true);
+	const [verifyLogin, { isLoading }] = useLoginMutation();
+	const [error, setError] = useState<boolean>(false);
 	const inputPassword = useRef<HTMLInputElement>(null);
-	const [initialValues, setInitialValues] = useState({
+	const [initialValues, setInitialValues] = useState<ILogin>({
 		email: '',
 		password: '',
 	});
-	const showPassword = () => {
-		inputPassword.current?.getAttribute('type') === 'password' ? SetIconShowPassword(false) : SetIconShowPassword(true);
-	};
-	const handleSubmit = (values: any) => {
-		console.log(values);
-	};
 
+	const UseCase: any = {
+		unautorized: () => {
+			setError(true);
+		},
+		authorized: (res: any) => {
+			dispatch(saveToken(res.data));
+			navigate('/dashboard');
+		},
+	};
+	const handleSubmit = async (values: ILogin) => {
+		let res: any = await verifyLogin(values);
+		console.log(res);
+		switch (res.data.status) {
+			case 200:
+				UseCase.authorized(res);
+				break;
+			case 401:
+				UseCase.unautorized(res);
+		}
+	};
 	return (
 		<>
 			<Helmet>
 				<title>Login</title>
 			</Helmet>
-			<FormContainer initialValues={initialValues} validationSchema={LoginSchema} onSubmit={handleSubmit}>
-				{(form: any) => {
-					const { handleSubmit, errors, touched, isSubmitting, resetForm } = form;
-					return (
-						<form className='form-style' onSubmit={handleSubmit}>
-							<h1 className='title'>Login</h1>
-							<div className='content-input f-column'>
-								<label className='form-label'>Usuario</label>
-								<input {...setInputProps('email', '', form)} placeholder='Ingresa el usuario'></input>
-							</div>
-							<div className='content-input f-column'>
-								<div className='d-flex space-between'>
-									<label className='form-label'>Contraseña</label>
-									<div className='flex-shrink-0'>
-										<div className=''>
-											<a href='auth-recoverpw.html' className='text-muted'>
-												Forgot password?
-											</a>
-										</div>
-									</div>
-								</div>
-
-								<div className='input-group d-flex input-high'>
-									<input type={iconShowPassword ? 'password' : 'text'} {...setInputProps('password', '', form)} ref={inputPassword}></input>
-
-									<label
-										className='btn look'
-										id='password-addon'
-										onClick={() => {
-											showPassword();
-										}}
-									>
-										{inputPassword.current?.getAttribute('type') == 'password' ? <i className='fas fa-eye-slash'></i> : <i className='fas fa-eye'></i>}
-									</label>
-								</div>
-							</div>
-							<div className='row mb-4 w-100'>
-								<div className='col'>
-									<div className='form-check'>
-										<input className='form-check-input' type='checkbox' id='remember-check'></input>
-										<label className='form-check-label' htmlFor='remember-check'>
-											Recordarme
-										</label>
-									</div>
-								</div>
-							</div>
-							<div className='mb-3'>
-								<button className='btn btn-primary w-100 input-high' type='submit'>
-									Ingresar
-								</button>
-							</div>
-						</form>
-					);
-				}}
-			</FormContainer>
+			<main className='login'>
+				<h1 className='text-center c-letter title dark:text-white'>Acceder a plataforma</h1>
+				<p className='paragraph text-center mb-4'>Ingresa tu datos para iniciar sesión</p>
+				<FormContainer initialValues={initialValues} validationSchema={LoginSchema} onSubmit={handleSubmit}>
+					{(form: any) => {
+						const { handleSubmit, isSubmitting }: ParametersForm = form;
+						return (
+							<FormStyled onSubmit={handleSubmit} autoComplete={'off'}>
+								<InputText name='email' placeholder='Email' form={form} icon={eye} />
+								<InputTextPassword name='password' placeholder='Contraseña' form={form} icon={eye} />
+								<ButtonSubmit type='submit'>Ingresar</ButtonSubmit>
+							</FormStyled>
+						);
+					}}
+				</FormContainer>
+				<LinkComponentRegister />
+				<ShowErrorLogin error={error} />
+				<Link to='/account/password-recovery' className='reset-password dark:text-white border rounded-full px-4 py-2'>
+					Olvidaste tu contraseña
+				</Link>
+			</main>
 		</>
 	);
 };

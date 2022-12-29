@@ -66,6 +66,29 @@ export const LoginSchema = (values: any) =>
 		email: Yup.string().email().required(),
 		password: Yup.string().required(),
 	});
+export const RegisterSchema = (values: any) =>
+	Yup.object().shape({
+		name: Yup.string().required(),
+		lastName: Yup.string().required(),
+		email: Yup.string().email().required(),
+		password: Yup.string().required(),
+		phone: Yup.number()
+			.integer()
+			.test('len', (val: any) => val.toString().length >= 7 && val.toString().length <= 15)
+			.required(),
+	});
+export const RegisterCompanySchema = (values: any) =>
+	Yup.object().shape({
+		organization: Yup.string().required(),
+		url: Yup.string().required(),
+		employment: Yup.string().required(),
+		email: Yup.string().email().required(),
+		password: Yup.string().required(),
+		phone: Yup.number()
+			.integer()
+			.test('len', (val: any) => val.toString().length >= 7 && val.toString().length <= 15)
+			.required(),
+	});
 export const FormSchema = (values: any) =>
 	Yup.object().shape({
 		title_form: Yup.string().required(),

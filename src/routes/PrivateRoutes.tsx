@@ -1,13 +1,15 @@
-import { Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { Login } from '../pages/Account/login/login';
 import { ErrorBoundary } from './Boundary';
+import { StyledEngineProvider } from '@mui/material/styles';
 
 type Props = {
 	children: React.ReactNode;
 };
+
 function Component(props: Props) {
 	return (
-		<Suspense fallback={<div>Loading...</div>}>
+		<Suspense fallback={<></>}>
 			<ErrorBoundary>{props.children}</ErrorBoundary>
 		</Suspense>
 	);
@@ -16,7 +18,7 @@ function Component(props: Props) {
 export const PrivateRoutes = {
 	Dashboard: (
 		<Component>
-			<Login />
+			<h1>Dashboard</h1>
 		</Component>
 	),
 };

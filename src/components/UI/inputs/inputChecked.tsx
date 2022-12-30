@@ -11,9 +11,11 @@ const InputCheckedStyled = styled.div`
 		opacity: 0;
 		pointer-events: none;
 		&:checked + .input-checked {
-			background-color: #2f71ff;
-			border-color: #2f71ff;
+			background-color: ${props => props.color || '#2f71ff'};
+			border-color: ${props => props.color || '#2f71ff'};
+			div,
 			i {
+				transform: rotate(0deg);
 				background-color: white;
 			}
 		}
@@ -28,7 +30,11 @@ const InputCheckedStyled = styled.div`
 		justify-content: center;
 		align-items: center;
 		border-radius: 4px;
+		transition: 0.3s;
+		div,
 		i {
+			transition: 0.3s;
+			transform: rotate(40deg);
 			width: 100%;
 			height: 100%;
 			background-color: transparent;
@@ -37,12 +43,12 @@ const InputCheckedStyled = styled.div`
 `;
 
 export const InputChecked = (props: IInputCheckedProps) => {
-	const { name, form, className } = props;
+	const { name, form, color, className } = props;
 	const checkeable = useRef<HTMLInputElement>(null);
 	const inputID = generateId({ type: 'string' }).toString();
 	return (
-		<div className={`content-input ${className ? className : ''}`}>
-			<InputCheckedStyled className={`content-sub-input`}>
+		<div className={`${className ? className : ''}`}>
+			<InputCheckedStyled className={`content-sub-input`} color={color}>
 				<input type='checkbox' id={inputID} {...(form ? checkableBoolProps(name, ``, form) : {})} ref={checkeable} />
 				<label className='input-checked' htmlFor={inputID}>
 					<IconMask style={{ WebkitMaskImage: `url(${check})` }} />

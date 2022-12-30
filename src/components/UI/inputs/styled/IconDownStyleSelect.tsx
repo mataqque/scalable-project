@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const IconMask = styled.i`
+export const IconMask = styled.div`
 	mask-position: center;
 	-webkit-mask-position: center;
 	mask-size: contain;

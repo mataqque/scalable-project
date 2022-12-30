@@ -3,8 +3,10 @@ import './form.scss';
 export const FormStyled = styled.form`
 	width: 100%;
 	--widthIcon: 3rem;
+	@media (max-width: 600px) {
+		--widthIcon: 2.5rem;
+	}
 	.content-input {
-		margin-bottom: 1rem;
 		width: 100%;
 		--backgroundInput: white;
 		@media (prefers-color-scheme: dark) {

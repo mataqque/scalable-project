@@ -66,6 +66,19 @@ export const LoginSchema = (values: any) =>
 		email: Yup.string().email().required(),
 		password: Yup.string().required(),
 	});
+
+export const componentsSchema = (values: any) =>
+	Yup.object().shape({
+		name: Yup.string().required(),
+		lname: Yup.string().required(),
+		email: Yup.string().email().required(),
+		password: Yup.string().required(),
+		name2: Yup.string().required(),
+		lname2: Yup.string().required(),
+		email2: Yup.string().email().required(),
+		password2: Yup.string().required(),
+	});
+
 export const RegisterSchema = (values: any) =>
 	Yup.object().shape({
 		name: Yup.string().required(),

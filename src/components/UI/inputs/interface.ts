@@ -5,12 +5,13 @@ export interface ParametersForm {
 	isSubmitting: boolean;
 }
 // interface for input radio
-export interface IInputRadioProps {
+export interface IInputSwitchProps {
 	name: string;
-	defaultValue?: string;
-	value?: string;
+	defaultValue?: boolean;
 	className?: string;
 	form: any;
+	color?: string;
+	outline?: boolean;
 }
 // end interface for input radio
 
@@ -41,6 +42,7 @@ export interface ISelectProps {
 	icon?: any;
 	label: string;
 	data: { value: string; label: string }[];
+	color?: string;
 }
 // interface for input select
 
@@ -52,12 +54,23 @@ export interface InputDateRangeProps {
 }
 // end interface for input date
 
+// interface for input radio
+export interface IInputRadioProps {
+	name: string;
+	form?: any;
+	defaultValue?: string;
+	className?: string;
+	color?: string;
+}
+// end interface for input radio
+
 // interface for input checkbox
 export interface IInputCheckedProps {
 	name: string;
 	form?: any;
 	defaultValue?: string;
 	className?: string;
+	color?: string;
 }
 
 // end interface for input checkbox

@@ -52,7 +52,6 @@ export const InputTextStyled = styled.input`
 		}
 	}
 	&.--valid {
-		border-width: 2px !important;
 		border-color: #00cc00 !important;
 		& ~ .label-accept {
 			border-color: #00cc00 !important;

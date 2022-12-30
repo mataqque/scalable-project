@@ -11,7 +11,7 @@ interface IIconTogglePassword {
 export const IconInput = (props: IIconInput) => {
 	return (
 		<div className='content-icon'>
-			<IconMask className='mask' style={{ WebkitMaskImage: `url(${props.icon})` }}></IconMask>
+			<IconMask className='mask' style={{ WebkitMaskImage: `url(${props.icon})`, backgroundColor: `var(--letterInput)` }}></IconMask>
 		</div>
 	);
 };

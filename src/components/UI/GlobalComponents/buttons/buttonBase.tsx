@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-interface ICircularImageProps {
-	src: string;
-	alt?: string;
-}
-
 export const ButtonBase = styled.button`
-	height: 3rem;
+	height: ${(props: any) => {
+		if (props.type === 'sm') return '1.5rem';
+		if (props.type === 'md') return '2.5rem';
+		if (props.type === 'lg') return '3.5rem';
+		return '2.5rem'; // valor por defecto si no se especifica type
+	}};
 	width: max-content;
 	border-radius: 7px;
 	border-width: 1px;
@@ -15,8 +15,8 @@ export const ButtonBase = styled.button`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0.5rem 1.5rem;
-	min-width: 10rem;
+	padding: 0.5rem 1.2rem;
+	min-width: 4rem;
 `;
 
 export const ButtonOutline = styled(ButtonBase)`
@@ -32,4 +32,13 @@ export const BtnIcon = styled.button`
 	border-radius: 7px;
 	border-width: 1px;
 	border-style: solid;
+`;
+
+export const BtnTag = styled.button`
+	border-radius: 100px;
+	height: max-content;
+	background-color: ${props => props.color};
+	color: white;
+	width: max-content;
+	padding: 2px 10px;
 `;

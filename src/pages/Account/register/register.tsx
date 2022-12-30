@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { LoginSchema, RegisterCompanySchema, RegisterSchema } from '../../../components/helpers/common/forms/constraints/ValidatonSchemas';
 import { FormContainer } from '../../../components/helpers/common/forms/Form';
-import { InputSelect, InputText, InputTextPassword } from '../../../components/UI/inputs/inputs';
+import { InputText, InputTextPassword } from '../../../components/UI/inputs/inputText';
 import { ParametersForm } from '../interfaces/interface';
 import { ButtonSubmit } from '../login/components/ButtonSubmit.styled';
 import { initValuesCompany, initValuesWorker, IRegisterCompany, IRegisterWorker } from './interfaces/register.interface';
@@ -12,6 +12,7 @@ import mail from '../../../assets/images/Account/icons/mail.svg?url';
 import { Link } from 'react-router-dom';
 import { LinkComponentLogin, LinkComponentRegister } from '../components/linkcomponent';
 import { FormStyled } from '../../../components/UI/GlobalComponents/Form/form';
+import { InputSelect } from '../../../components/UI/inputs/inputSelect';
 
 export const Register = () => {
 	const [loading, setLoading] = useState(true);

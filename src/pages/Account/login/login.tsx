@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginSchema } from '../../../components/helpers/common/forms/constraints/ValidatonSchemas';
 import { FormContainer } from '../../../components/helpers/common/forms/Form';
-import { InputText, InputTextPassword } from '../../../components/UI/inputs/inputs';
+import { InputText, InputTextPassword } from '../../../components/UI/inputs/inputText';
 import { useLoginMutation } from '../../../store/apis/authApi.api';
 import { saveToken } from '../../../store/globlalSlice/auth/auth.slice';
 import { ILogin } from './interfaces/login.interface';

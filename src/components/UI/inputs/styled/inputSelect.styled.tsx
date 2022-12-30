@@ -60,7 +60,7 @@ export const Options = styled.div`
 		max-height: 10rem;
 		&.scroll {
 			&::-webkit-scrollbar-thumb {
-				background-color: #3f0a85;
+				background-color: ${props => props.color || '#3f0a85'};
 			}
 		}
 	}
@@ -86,8 +86,9 @@ export const InputSelectStyled = styled.input`
 `;
 
 export const ContentOptions = (props: any) => {
+	const { color } = props;
 	return (
-		<Options className={`${props.show === true ? 'active' : ''}`}>
+		<Options className={`${props.show === true ? 'active' : ''}`} color={color}>
 			<div className='overflow-hidden'>
 				<div className='content-options scroll'>{props.children}</div>
 			</div>

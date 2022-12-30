@@ -11,7 +11,7 @@ const dispatchEvent = (element: any, event: any, value: string) => {
 };
 
 export const InputSelect = (props: ISelectProps) => {
-	const { title, name, label, form, ...rest } = props;
+	const { title, name, label, form, color, ...rest } = props;
 	const [showOptions, setShowOptions] = useState<boolean>(false);
 	const [valueSelect, setValueSelect] = useState<string>(label || '');
 	const InputRef = useRef<HTMLInputElement>(null);
@@ -24,7 +24,6 @@ export const InputSelect = (props: ISelectProps) => {
 		// if (showOptions == true) setShowOptions(false);
 	};
 	const openOptions = () => {
-		InputRef.current?.select();
 		setShowOptions(!showOptions);
 	};
 	return (
@@ -37,7 +36,7 @@ export const InputSelect = (props: ISelectProps) => {
 				</div>
 				{props.icon && <IconInput icon={props.icon}></IconInput>}
 				<IconInputSelect icon={down} open={showOptions} class={'bg-gray-300'}></IconInputSelect>
-				<ContentOptions show={showOptions}>
+				<ContentOptions show={showOptions} color={color}>
 					{props.data.map((item: any, index: number) => {
 						const { label, value } = item;
 						return (

@@ -19,6 +19,7 @@ module.exports = {
 				warning: '#ff8c00',
 				danger: '#ff0000',
 				gray: {
+					10: '#fafafa',
 					100: '#e8e8e8',
 					200: '#c5c5c5',
 					300: '#a2a2a2',
@@ -28,6 +29,9 @@ module.exports = {
 				purple: {
 					500: '#852dda',
 				},
+			},
+			fontSize: {
+				xsm: '0.75rem',
 			},
 			height: {
 				input: '3rem',

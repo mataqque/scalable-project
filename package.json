@@ -12,7 +12,7 @@
 		"coverage": "vitest run --coverage",
 		"prepare": "husky install",
 		"husky": "npx husky add .husky/commit-msg 'npx --no -- commitlint --edit ${1}'",
-		"release": "release-it"
+		"release": "release-it --changelog"
 	},
 	"proxy": "http://localhost:5000/",
 	"dependencies": {

@@ -78,7 +78,7 @@ export default function Components() {
 		return Array.from({ length: numUsers }, createUser);
 	};
 	const fakeUsers: IUsers[] = createUsers(20);
-	console.log(fakeUsers);
+
 	const notification = (type: any) => {
 		ToastNotify({ message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', options: { type: type, position: 'bottom-left' } });
 	};
@@ -86,6 +86,7 @@ export default function Components() {
 		ToastNotifyPromise();
 	};
 	const handleSubmit = async (values: any) => {};
+
 	return (
 		<main className='dark:bg-black'>
 			<div className='container'>

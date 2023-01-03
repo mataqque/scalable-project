@@ -51,7 +51,7 @@ export const Options = styled.div`
 		box-shadow: 0px 8px 15px -9px #0000004d;
 		animation: showOptions 0.3s linear forwards;
 	}
-	&:not(.active) {
+	&.close {
 		box-shadow: 0px 8px 15px -9px #0000004d;
 		animation: closeOptions 0.3s linear forwards;
 	}
@@ -87,8 +87,9 @@ export const InputSelectStyled = styled.input`
 
 export const ContentOptions = (props: any) => {
 	const { color } = props;
+	const show = props.show.toString();
 	return (
-		<Options className={`${props.show === true ? 'active' : ''}`} color={color}>
+		<Options className={`${show == 'true' ? 'active' : ''} ${show == 'false' ? 'close' : ''}`} color={color}>
 			<div className='overflow-hidden'>
 				<div className='content-options scroll'>{props.children}</div>
 			</div>

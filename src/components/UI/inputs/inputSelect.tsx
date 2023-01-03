@@ -12,7 +12,7 @@ const dispatchEvent = (element: any, event: any, value: string) => {
 
 export const InputSelect = (props: ISelectProps) => {
 	const { title, name, label, form, color, ...rest } = props;
-	const [showOptions, setShowOptions] = useState<boolean>(false);
+	const [showOptions, setShowOptions] = useState<unknown>('');
 	const [valueSelect, setValueSelect] = useState<string>(label || '');
 	const InputRef = useRef<HTMLInputElement>(null);
 	const changeValue = (value: string, label: string) => {

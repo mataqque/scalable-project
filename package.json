@@ -12,7 +12,7 @@
 		"coverage": "vitest run --coverage",
 		"prepare": "husky install",
 		"husky": "npx husky add .husky/commit-msg 'npx --no -- commitlint --edit ${1}'",
-		"release": "release-it --changelog"
+		"prerelease": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
 	},
 	"proxy": "http://localhost:5000/",
 	"dependencies": {

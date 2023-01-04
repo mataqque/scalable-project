@@ -73,5 +73,36 @@
 		"react": {
 			"version": "detect"
 		}
+	},
+	"release-it": {
+		"git": {
+			"commitMessage": "chore(release): ${version}"
+		},
+		"github": {
+			"release": true,
+			"releaseName": "v${version}"
+		},
+		"npm": {
+			"publish": false
+		},
+		"plugins": {
+			"@release-it/conventional-changelog": {
+				"infile": "CHANGELOG.md",
+				"outfile": "CHANGELOG.md",
+				"preset": {
+					"name": "conventionalcommits",
+					"types": [
+						{
+							"type": "feat",
+							"section": "Features"
+						},
+						{
+							"type": "fix",
+							"section": "Bug Fixes"
+						}
+					]
+				}
+			}
+		}
 	}
 }

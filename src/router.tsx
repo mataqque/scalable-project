@@ -25,6 +25,9 @@ export default function RoutesDom(props: any): JSX.Element {
 			<Routes>
 				<Route path='/privated' element={<PrivateRoute verifyCredential={''}>{PrivateRoutes.Dashboard}</PrivateRoute>}></Route>
 			</Routes>
+			{/* <Routes>
+				<Route path='/*' element={<PublicRoute>{PublicRoutes.Default}</PublicRoute>} />
+			</Routes> */}
 		</Router>
 	);
 }

@@ -59,4 +59,9 @@ export const PublicRoutes = {
 			<Components />
 		</Boundary>
 	),
+	Default: (
+		<Boundary>
+			<h1>Page Default</h1>
+		</Boundary>
+	),
 };

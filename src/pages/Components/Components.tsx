@@ -26,7 +26,8 @@ import { InputRadio } from '../../components/UI/inputs/inputRadio';
 import eye from '../../assets/images/Account/icons/eye-svg.svg?url';
 import person from '../../assets/images/Account/icons/user.svg?url';
 import mail from '../../assets/images/Account/icons/mail.svg?url';
-
+import { ChartArea } from '../../components/UI/charts/chartArea';
+// import DownloadOutlinedIcon from '@mui/icons-material/DownloadOutlined';
 interface IUsers {
 	name: string;
 	lname: string;
@@ -153,6 +154,9 @@ export default function Components() {
 										<div className='order lg:w-1/4 w-1/2 p-2'>
 											<InputSelect name='' form={form} data={dataSelec2} label={'Proyectos'} color='red' />
 										</div>
+										<div className='order lg:w-1/4 w-1/2 p-2'>
+											<InputDateRange />
+										</div>
 
 										<div className='order lg:w-1/4 w-1/2 p-2 flex items-center flex-wrap'>
 											<div className='flex mb-2'>
@@ -245,6 +249,12 @@ export default function Components() {
 						<BtnIcon className='mr-2 flex items-center justify-center border-danger'>
 							<IconMask className='icon-delete bg-danger w-1/2 h-1/2' />
 						</BtnIcon>
+					</div>
+					<div className='flex'>
+						<ButtonBase className='bg-gray-300 mr-2 mb-2 text-white mr-auto'>
+							{/* <DownloadOutlinedIcon sx={{ mr: '10px' }} /> */}
+							Download file
+						</ButtonBase>
 					</div>
 				</div>
 				<SeparatorHorizontal />
@@ -369,6 +379,16 @@ export default function Components() {
 						})}
 					</tbody>
 				</table>
+				<SeparatorHorizontal />
+				<h1 className='text-letter text-2xl mb-4 dark:text-white'>Graficos</h1>
+				<div className='flex'>
+					<div className='w-1/2'>
+						<ChartArea></ChartArea>
+					</div>
+					<div className='w-1/2'>
+						<ChartArea></ChartArea>
+					</div>
+				</div>
 			</div>
 		</main>
 	);

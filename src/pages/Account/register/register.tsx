@@ -59,11 +59,21 @@ export const Register = () => {
 								const { handleSubmit, isSubmitting }: ParametersForm = form;
 								return (
 									<FormStyled onSubmit={handleSubmit}>
-										<InputText name='name' placeholder='Nombre' form={form} icon={person} />
-										<InputText name='lastName' placeholder='Apellido' form={form} icon={person} />
-										<InputText name='email' placeholder='Email' form={form} icon={mail} />
-										<InputText name='password' placeholder='Contraseña' form={form} icon={eye} />
-										<InputText name='phone' placeholder='Teléfono' form={form} icon={eye} />
+										<div className='mb-2'>
+											<InputText name='name' placeholder='Nombre' form={form} icon={person} />
+										</div>
+										<div className='mb-2'>
+											<InputText name='lastName' placeholder='Apellido' form={form} icon={person} />
+										</div>
+										<div className='mb-2'>
+											<InputText name='email' placeholder='Email' form={form} icon={mail} />
+										</div>
+										<div className='mb-2'>
+											<InputText name='password' placeholder='Contraseña' form={form} icon={eye} />
+										</div>
+										<div className='mb-2'>
+											<InputText name='phone' placeholder='Teléfono' form={form} icon={eye} />
+										</div>
 										<ButtonSubmit type='submit'>Registrar</ButtonSubmit>
 									</FormStyled>
 								);
@@ -76,12 +86,24 @@ export const Register = () => {
 								const { handleSubmit, isSubmitting }: ParametersForm = form;
 								return (
 									<FormStyled onSubmit={handleSubmit}>
-										<InputText name='organization' placeholder='Organización' form={form} icon={person} />
-										<InputText name='url' placeholder='Url' form={form} icon={person} />
-										<InputSelect name='employment' form={form} icon={person} data={data} label={'Cargo'} />
-										<InputText name='email' placeholder='Email' form={form} icon={mail} />
-										<InputTextPassword name='password' placeholder='Contraseña' form={form} icon={eye} />
-										<InputText name='phone' placeholder='Teléfono' form={form} icon={eye} />
+										<div className='mb-2'>
+											<InputText name='organization' placeholder='Organización' form={form} icon={person} />
+										</div>
+										<div className='mb-2'>
+											<InputText name='url' placeholder='Url' form={form} icon={person} />
+										</div>
+										<div className='mb-2'>
+											<InputSelect name='employment' form={form} icon={person} data={data} label={'Cargo'} />
+										</div>
+										<div className='mb-2'>
+											<InputText name='email' placeholder='Email' form={form} icon={mail} />
+										</div>
+										<div className='mb-2'>
+											<InputTextPassword name='password' placeholder='Contraseña' form={form} icon={eye} />
+										</div>
+										<div className='mb-2'>
+											<InputText name='phone' placeholder='Teléfono' form={form} icon={eye} />
+										</div>
 										<ButtonSubmit type='submit'>Ingresar</ButtonSubmit>
 									</FormStyled>
 								);

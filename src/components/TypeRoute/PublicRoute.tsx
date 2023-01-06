@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
-import Footer from '../Page/Footer/footer';
-import Navbar from '../Page/Navbar/navbar';
+import Navbar from '../UI/Page/Navbar/navbar';
+import Footer from '../UI/Page/Footer/footer';
 
 export default function PublicRoute(props: any) {
 	return (

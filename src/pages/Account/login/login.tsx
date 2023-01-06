@@ -58,8 +58,12 @@ export const Login: React.FunctionComponent = () => {
 						const { handleSubmit, isSubmitting }: ParametersForm = form;
 						return (
 							<FormStyled onSubmit={handleSubmit} autoComplete={'off'}>
-								<InputText name='email' placeholder='Email' form={form} icon={eye} />
-								<InputTextPassword name='password' placeholder='Contraseña' form={form} icon={eye} />
+								<div className='mb-2'>
+									<InputText name='email' placeholder='Email' form={form} icon={eye} />
+								</div>
+								<div className='mb-2'>
+									<InputTextPassword name='password' placeholder='Contraseña' form={form} icon={eye} />
+								</div>
 								<ButtonSubmit type='submit'>Ingresar</ButtonSubmit>
 							</FormStyled>
 						);

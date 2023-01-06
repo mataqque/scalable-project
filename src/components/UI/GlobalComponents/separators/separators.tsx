@@ -12,4 +12,5 @@ export const SeparatorVertical = styled.div`
 	height: 100%;
 	background-color: #dedddf;
 	margin: 0 1rem;
+	opacity: ${(props: { opacity?: number }) => props.opacity || 1};
 `;

@@ -10,7 +10,7 @@ const ContainerNavStyled = styled.nav`
 	z-index: 20;
 	transition: 0.3s;
 	background-color: #0e0b1e;
-	height: 70px;
+	height: var(--heightNav);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -29,6 +29,8 @@ const ContainerNavStyled = styled.nav`
 			background: #ffffffb2;
 			transition: 0.3s;
 			display: flex;
+			position: relative;
+			bottom: -3px;
 		}
 		&.active {
 			.line {

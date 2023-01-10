@@ -2,7 +2,7 @@ import { componentsSchema, LoginSchema } from '../../components/helpers/common/f
 import { FormContainer } from '../../components/helpers/common/forms/Form';
 import { FormStyled } from '../../components/UI/GlobalComponents/Form/form';
 import { ParametersForm } from '../Account/interfaces/interface';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ImageBrand } from '../Account/components/brand';
 import { SeparatorHorizontal } from '../../components/UI/GlobalComponents/separators/separators';
 import { FormSearch, InputText, InputTextPassword } from '../../components/UI/inputs/inputText';
@@ -27,7 +27,14 @@ import eye from '../../assets/images/Account/icons/eye-svg.svg?url';
 import person from '../../assets/images/Account/icons/user.svg?url';
 import mail from '../../assets/images/Account/icons/mail.svg?url';
 import { ChartArea } from '../../components/UI/charts/chartArea';
-// import DownloadOutlinedIcon from '@mui/icons-material/DownloadOutlined';
+import DownloadOutlinedIcon from '@mui/icons-material/DownloadOutlined';
+import { DataGrid } from '../../components/UI/dataGrid/dataGrid';
+import { MainContainer } from '../../components/UI/container/main';
+import EmailIcon from '@mui/icons-material/Email';
+import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import { ProgressBarCircle } from '../../components/UI/progressBar/progressBarCircle';
+
 interface IUsers {
 	name: string;
 	lname: string;
@@ -87,11 +94,19 @@ export default function Components() {
 		ToastNotifyPromise();
 	};
 	const handleSubmit = async (values: any) => {};
-
+	useEffect(() => {
+		window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+			const colorScheme = e.matches ? 'dark' : 'light';
+			console.log(colorScheme);
+			if (colorScheme === 'dark') {
+			} else {
+			}
+		});
+	}, []);
 	return (
-		<main className='dark:bg-black'>
+		<MainContainer>
 			<div className='container'>
-				<ImageBrand className='bg-gray-500 '></ImageBrand>
+				<ImageBrand className='bg-gray-500'></ImageBrand>
 				<h1 className='text-letter dark:text-white text-8xl'>Title</h1>
 				<h1 className='text-letter dark:text-white text-7xl'>Title</h1>
 				<h1 className='text-letter dark:text-white text-6xl'>Title</h1>
@@ -252,7 +267,7 @@ export default function Components() {
 					</div>
 					<div className='flex'>
 						<ButtonBase className='bg-gray-300 mr-2 mb-2 text-white mr-auto'>
-							{/* <DownloadOutlinedIcon sx={{ mr: '10px' }} /> */}
+							<DownloadOutlinedIcon sx={{ mr: '10px' }} />
 							Download file
 						</ButtonBase>
 					</div>
@@ -318,78 +333,53 @@ export default function Components() {
 				<div className='flex flex-col'>
 					<List></List>
 				</div>
-				<table className='table-auto w-full text-sm'>
-					<thead>
-						<tr className=' text-gray-700'>
-							<th className='px-4 py-2 text-left'>
-								<InputChecked name=''></InputChecked>
-							</th>
-							<th className='px-4 py-2 text-left dark:text-white'>Nombre</th>
-							<th className='px-4 py-2 text-left dark:text-white'>Uso</th>
-							<th className='px-4 py-2 text-left dark:text-white'>Última actualización</th>
-							<th className='px-4 py-2 text-left dark:text-white'>Etiquetas</th>
-							<th className='px-4 py-2 text-left dark:text-white'>Accciones</th>
-						</tr>
-					</thead>
-					<tbody>
-						{fakeUsers.map((user: any, index: number) => {
-							return (
-								<tr className='text-gray-700 hover:bg-gray-10 border-b border-b-stone-100 ' key={index + 'item-list'}>
-									<td className='px-4 py-2'>
-										<InputChecked name=''></InputChecked>
-									</td>
-									<td className='px-4 py-2 flex items-center'>
-										<IconAvatar name={user.name} photo={user.image} />
-										<div className='flex flex-col ml-4'>
-											<h1 className='text-letter text-base leading-4 mb-1 dark:text-white'>{user.name}</h1>
-											<p className='text-letter text-sm leading-3	'>{user.lname}</p>
-										</div>
-									</td>
-									<td className='px-4 py-2 w-60'>
-										<div className='w-full'>
-											<ProgressBar progress={user.percent} height='6px' color={user.color}></ProgressBar>
-										</div>
-									</td>
-									<td className='px-4 py-2 text-sm dark:text-white'>{convertToDate(user.dateUpate)}</td>
-									<td className='px-4 py-2 text-sm w-40'>
-										<div className='flex'>
-											{user.tags.map((tag: any, index: number) => {
-												return (
-													<div key={index + 'tag'} className='mr-1'>
-														<BtnTag color='#0091ff' className='text-xsm'>
-															{tag}
-														</BtnTag>
-													</div>
-												);
-											})}
-										</div>
-									</td>
-									<td className='px-4 py-2 text-sm  w-40'>
-										<div className='flex items-center align-center'>
-											<button className='p-1 flex mr-2 opacity-80	hover:opacity-100'>
-												<IconMask className='icon-edit bg-info w-4 h-4 ' />
-											</button>
-											<button className='p-1 flex opacity-80	hover:opacity-100'>
-												<IconMask className='icon-delete bg-danger w-5 h-5 ' />
-											</button>
-										</div>
-									</td>
-								</tr>
-							);
-						})}
-					</tbody>
-				</table>
+				<DataGrid data={fakeUsers} />
+				<SeparatorHorizontal />
+				<h1 className='text-letter text-2xl mb-4 dark:text-white'>Graficos</h1>
+				<div className='grid targets'>
+					<div className='bg-gray-30 p-6 flex'>
+						<div className='flex flex-col'>
+							<EmailIcon className='fill-primary mb-2' />
+							<span className='text-primary text-2xl font-bold mb-1'>12,361</span>
+							<span className='text-info'>Emails Sent</span>
+						</div>
+						<div className='ml-auto'>
+							<ProgressBarCircle progress={30} size={80} />
+						</div>
+					</div>
+					<div className='bg-gray-30 p-6 flex'>
+						<div className='flex flex-col'>
+							<PersonAddIcon className='fill-primary mb-2' />
+							<span className='text-primary text-2xl font-bold mb-1'>431,225</span>
+							<span className='text-info'>Sales Obtained</span>
+						</div>
+						<div className='ml-auto'>
+							<ProgressBarCircle progress={60} size={80} />
+						</div>
+					</div>
+					<div className='bg-gray-30 p-6 flex'>
+						<div className='flex flex-col'>
+							<PersonAddIcon className='fill-primary mb-2' />
+							<span className='text-primary text-2xl font-bold mb-1'>32,441</span>
+							<span className='text-info'>New Clients</span>
+						</div>
+						<div className='ml-auto'>
+							<ProgressBarCircle progress={90} size={80} />
+						</div>
+					</div>
+				</div>
 				<SeparatorHorizontal />
 				<h1 className='text-letter text-2xl mb-4 dark:text-white'>Graficos</h1>
 				<div className='flex'>
 					<div className='w-1/2'>
 						<ChartArea></ChartArea>
 					</div>
+					<div className=''></div>
 					<div className='w-1/2'>
 						<ChartArea></ChartArea>
 					</div>
 				</div>
 			</div>
-		</main>
+		</MainContainer>
 	);
 }

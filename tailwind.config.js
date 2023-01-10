@@ -14,12 +14,19 @@ module.exports = {
 			},
 			colors: {
 				letter: '#4a5163',
+				primary: '#160f2d',
 				info: '#3667fb',
 				success: '#00a700',
 				warning: '#ff8c00',
 				danger: '#ff0000',
+				transparent: {
+					10: 'rgba(255, 255, 255, 0.1)',
+				},
 				gray: {
 					10: '#fafafa',
+					20: '#fafafa',
+					30: '#f5f5f5',
+					80: '#4a5163',
 					100: '#e8e8e8',
 					200: '#c5c5c5',
 					300: '#a2a2a2',

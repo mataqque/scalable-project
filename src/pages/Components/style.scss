@@ -9,3 +9,36 @@ main {
 	// background-size: cover;
 	// background-attachment: fixed;
 }
+
+.targets {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-gap: 1rem;
+}
+/* Define the size */
+.svg-indicator {
+	width: 100px;
+	height: 100px;
+}
+
+/* 
+ * Add the center and the radius using the size 
+ * and `stroke-width` values.
+ */
+.svg-indicator-track,
+.svg-indicator-indication {
+	cx: 50px;
+	cy: 50px;
+	r: 40px;
+	fill: transparent;
+	stroke-width: 10px;
+}
+
+/* Some color to highlight the rings */
+.svg-indicator-track {
+	stroke: #ddd;
+}
+
+.svg-indicator-indication {
+	stroke: #07c;
+}

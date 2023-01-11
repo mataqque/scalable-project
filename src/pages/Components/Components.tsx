@@ -106,23 +106,40 @@ export default function Components() {
 	return (
 		<MainContainer>
 			<div className='container'>
-				<ImageBrand className='bg-gray-500'></ImageBrand>
-				<h1 className='text-letter dark:text-white text-8xl'>Title</h1>
-				<h1 className='text-letter dark:text-white text-7xl'>Title</h1>
-				<h1 className='text-letter dark:text-white text-6xl'>Title</h1>
-				<h1 className='text-letter dark:text-white text-5xl'>Title</h1>
-				<h1 className='text-letter dark:text-white text-4xl'>Title</h1>
-				<h1 className='text-letter dark:text-white text-3xl'>Title</h1>
-				<h1 className='text-letter dark:text-white text-2xl'>Title</h1>
-				<h1 className='text-letter dark:text-white text-base'>Title</h1>
-				<p className='paragraph dark:text-gray-100'>
+				<div className='flex mt-10'>
+					<div className=''>
+						<h1 className='text-letter text-8xl'>Title</h1>
+					</div>
+					<div className='flex items-end mr-2'>
+						<h1 className='text-letter text-7xl'>Title</h1>
+					</div>
+					<div className='flex items-end mr-2'>
+						<h1 className='text-letter text-6xl'>Title</h1>
+					</div>
+					<div className='flex items-end mr-2'>
+						<h1 className='text-letter text-5xl'>Title</h1>
+					</div>
+					<div className='flex items-end mr-2'>
+						<h1 className='text-letter text-4xl'>Title</h1>
+					</div>
+					<div className='flex items-end mr-2'>
+						<h1 className='text-letter text-3xl'>Title</h1>
+					</div>
+					<div className='flex items-end mr-2'>
+						<h1 className='text-letter text-2xl'>Title</h1>
+					</div>
+					<div className='flex items-end mr-2'>
+						<h1 className='text-letter text-base'>Title</h1>
+					</div>
+				</div>
+				<p className='paragraph dark:text-gray-300'>
 					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
 					took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
 					unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
 					PageMaker including versions of Lorem Ipsum.
 				</p>
 				<SeparatorHorizontal />
-				<h1 className='text-letter text-2xl mb-4 dark:text-white'>Inputs</h1>
+				<h1 className='text-letter text-2xl mb-4  '>Inputs</h1>
 				<div className='w-full mb-4'>
 					<FormContainer initialValues={initialValues} validationSchema={componentsSchema} onSubmit={handleSubmit}>
 						{(form: any) => {
@@ -222,7 +239,7 @@ export default function Components() {
 					</div>
 				</div>
 				<SeparatorHorizontal />
-				<h1 className='text-letter text-2xl mb-4 dark:text-white'>Botones</h1>
+				<h1 className='text-letter text-2xl mb-4  '>Botones</h1>
 				<div className='flex flex-col '>
 					<ButtonBase className='mr-2'>Base button</ButtonBase>
 					<div className='flex my-4 flex-wrap'>
@@ -273,7 +290,7 @@ export default function Components() {
 					</div>
 				</div>
 				<SeparatorHorizontal />
-				<h1 className='text-letter text-2xl mb-4 dark:text-white'>Loaders</h1>
+				<h1 className='text-letter text-2xl mb-4  '>Loaders</h1>
 				<div className='flex flex-wrap'>
 					<div className='content-img w-40 h-40 mr-4 mb-3'>
 						<LazyImage src='https://encolombia.com/wp-content/uploads/2021/12/Que-es-paisajes.jpg' radius='100%' />
@@ -309,7 +326,7 @@ export default function Components() {
 					</div>
 				</div>
 				<SeparatorHorizontal />
-				<h1 className='text-letter text-2xl mb-4 dark:text-white'>Avatares</h1>
+				<h1 className='text-letter text-2xl mb-4  '>Avatares</h1>
 				<div className='flex my-4 flex flex-wrap'>
 					{fakeUsers.map((user: any, index: number) => {
 						return (
@@ -329,13 +346,13 @@ export default function Components() {
 					})}
 				</div>
 				<SeparatorHorizontal />
-				<h1 className='text-letter text-2xl mb-4 dark:text-white'>Lista</h1>
+				<h1 className='text-letter text-2xl mb-4  '>Lista</h1>
 				<div className='flex flex-col'>
 					<List></List>
 				</div>
 				<DataGrid data={fakeUsers} />
 				<SeparatorHorizontal />
-				<h1 className='text-letter text-2xl mb-4 dark:text-white'>Graficos</h1>
+				<h1 className='text-letter text-2xl mb-4  '>Graficos</h1>
 				<div className='grid targets'>
 					<div className='bg-gray-30 p-6 flex'>
 						<div className='flex flex-col'>
@@ -343,8 +360,9 @@ export default function Components() {
 							<span className='text-primary text-2xl font-bold mb-1'>12,361</span>
 							<span className='text-info'>Emails Sent</span>
 						</div>
-						<div className='ml-auto'>
-							<ProgressBarCircle progress={30} size={80} />
+						<div className='ml-auto flex items-center flex-col'>
+							<ProgressBarCircle progress={30} size={60} />
+							30%
 						</div>
 					</div>
 					<div className='bg-gray-30 p-6 flex'>
@@ -353,8 +371,9 @@ export default function Components() {
 							<span className='text-primary text-2xl font-bold mb-1'>431,225</span>
 							<span className='text-info'>Sales Obtained</span>
 						</div>
-						<div className='ml-auto'>
-							<ProgressBarCircle progress={60} size={80} />
+						<div className='ml-auto flex items-center flex items-center flex-col'>
+							<ProgressBarCircle progress={60} size={60} />
+							60%
 						</div>
 					</div>
 					<div className='bg-gray-30 p-6 flex'>
@@ -363,19 +382,20 @@ export default function Components() {
 							<span className='text-primary text-2xl font-bold mb-1'>32,441</span>
 							<span className='text-info'>New Clients</span>
 						</div>
-						<div className='ml-auto'>
-							<ProgressBarCircle progress={90} size={80} />
+						<div className='ml-auto flex items-center flex-col'>
+							<ProgressBarCircle progress={95} size={60} />
+							95%
 						</div>
 					</div>
 				</div>
 				<SeparatorHorizontal />
-				<h1 className='text-letter text-2xl mb-4 dark:text-white'>Graficos</h1>
+				<h1 className='text-letter text-2xl mb-4  '>Graficos</h1>
 				<div className='flex'>
-					<div className='w-1/2'>
+					<div className='w-1/2 p-4 bg-gray-30 mr-4'>
 						<ChartArea></ChartArea>
 					</div>
 					<div className=''></div>
-					<div className='w-1/2'>
+					<div className='w-1/2 p-4 bg-gray-30 mr-2'>
 						<ChartArea></ChartArea>
 					</div>
 				</div>

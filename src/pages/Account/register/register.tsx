@@ -42,7 +42,7 @@ export const Register = () => {
 				<title>Registro</title>
 			</Helmet>
 			<main className='register'>
-				<h1 className='text-center dark:text-white title mb-05'>Registrate</h1>
+				<h1 className='text-center   title mb-05'>Registrate</h1>
 				<p className='paragraph text-center mb-2'>Ingresa tu datos para crear un usuario</p>
 				<div className='option-type-form flex'>
 					<div onClick={() => changeTypeForm('worker')} className={`option mr-6 ${typeForm === 'worker' ? 'active' : ''}`}>

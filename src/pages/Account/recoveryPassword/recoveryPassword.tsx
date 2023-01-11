@@ -40,7 +40,7 @@ export const RecoveryPassword: React.FunctionComponent = () => {
 				<title>Recuperar contraseña</title>
 			</Helmet>
 			<main className='login'>
-				<h1 className='text-center dark:text-white title mb-1'>Olvidaste tu contraseña</h1>
+				<h1 className='text-center   title mb-1'>Olvidaste tu contraseña</h1>
 				<p className='paragraph text-center mb-2'>Ingrese la dirección de correo electrónico que utilizó cuando se unió y le enviaremos instrucciones para restablecer su contraseña.</p>
 				<FormContainer initialValues={initialValues} validationSchema={LoginSchema} onSubmit={handleSubmit}>
 					{(form: any) => {

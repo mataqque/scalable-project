@@ -34,7 +34,6 @@ export const ProgressBar = ({ progress, color, height, ...rest }: IProgressBarPr
 	};
 	const triggerEvent = (e: any) => {
 		if (e[0].isIntersecting) {
-			console.log(e[0].isIntersecting);
 			callbackDelay(() => setProgressBar(progress), 500);
 		}
 	};

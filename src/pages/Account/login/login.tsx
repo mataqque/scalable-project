@@ -51,7 +51,7 @@ export const Login: React.FunctionComponent = () => {
 				<title>Login</title>
 			</Helmet>
 			<main className='login'>
-				<h1 className='text-center c-letter title dark:text-white'>Acceder a plataforma</h1>
+				<h1 className='text-center c-letter title  '>Acceder a plataforma</h1>
 				<p className='paragraph text-center mb-4'>Ingresa tu datos para iniciar sesión</p>
 				<FormContainer initialValues={initialValues} validationSchema={LoginSchema} onSubmit={handleSubmit}>
 					{(form: any) => {
@@ -71,7 +71,7 @@ export const Login: React.FunctionComponent = () => {
 				</FormContainer>
 				<LinkComponentRegister />
 				<ShowErrorLogin error={error} />
-				<Link to='/account/password-recovery' className='reset-password dark:text-white border rounded-full px-4 py-2'>
+				<Link to='/account/password-recovery' className='reset-password   border rounded-full px-4 py-2'>
 					Olvidaste tu contraseña
 				</Link>
 			</main>

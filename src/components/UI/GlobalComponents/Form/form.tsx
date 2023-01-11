@@ -37,9 +37,9 @@ export const FormStyled = styled.form`
 			@media (max-width: 1400px) {
 				height: 2.5rem;
 			}
-			@media (prefers-color-scheme: dark) {
+			/* @media (prefers-color-scheme: dark) {
 				color: white;
-			}
+			} */
 			&.ligth {
 				background-color: white;
 				color: #5e6278;

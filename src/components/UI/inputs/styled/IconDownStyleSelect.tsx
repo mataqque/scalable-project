@@ -7,9 +7,9 @@ export const IconMask = styled.div`
 	-webkit-mask-size: contain;
 	mask-repeat: no-repeat;
 	-webkit-mask-repeat: no-repeat;
-	@media (prefers-color-scheme: dark) {
+	/* @media (prefers-color-scheme: dark) {
 		background-color: white;
-	}
+	} */
 `;
 
 export const IconDownStyleSelect = styled.div`

@@ -8,11 +8,16 @@ import { PrivateRoutes } from './routes/PrivateRoutes';
 import { PublicRoutes } from './routes/PublicRoutes';
 import { Header } from './components/helpers/header/header';
 import { verifyCredential } from './components/TypeRoute/domain/verifyCredentials.service';
+import { Modal } from './components/UI/GlobalComponents/modal/modal';
+import { FormCaptureEmail } from './components/contentmodals/form';
 
 export default function RoutesDom(props: any): JSX.Element {
 	return (
 		<Router>
 			<ToastContainer />
+			<Modal>
+				<FormCaptureEmail />
+			</Modal>
 			<Header />
 			<Routes>
 				<Route path='/account' element={<PublicRoute>{PublicRoutes.Account}</PublicRoute>}>

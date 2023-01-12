@@ -268,7 +268,7 @@ export default function Components() {
 						<ButtonOutline className='mb-2 text-white hover:border-danger hover:bg-danger hover:text-white border-danger mr-2 text-danger'>Action button</ButtonOutline>
 						<ButtonOutline className='mb-2 text-white hover:border-purple-500 hover:bg-purple-500 hover:text-white border-purple-500 mr-2 text-purple-500'>Action button</ButtonOutline>
 					</div>
-					<div className='flex flex-wrap'>
+					<div className='flex flex-wrap mb-6'>
 						<BtnIcon className='mr-2 flex items-center justify-center border-success'>
 							<IconMask className='icon-edit bg-success w-1/2 h-1/2' />
 						</BtnIcon>

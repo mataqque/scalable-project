@@ -9,9 +9,16 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import { changeTheme } from '../../theme/theme';
+import { useDispatch } from 'react-redux';
 
 export default function Navbar() {
 	const [theme, setTheme] = useState('dark');
+	const dispatch = useDispatch();
+	const changeThemeMode = (theme: string) => {
+		setTheme(theme);
+		dispatch(changeTheme(theme));
+	};
 	return (
 		<ContainerNav>
 			<Link to='/' className='brand bold'>
@@ -34,11 +41,11 @@ export default function Navbar() {
 				</div>
 				<div className='flex w-max'>
 					{theme === 'dark' ? (
-						<div className='rounded-full flex items-center justify-center w-10 h-10 hover:bg-transparent-10 duration-300 cursor-pointer' onClick={() => setTheme('light')}>
+						<div className='rounded-full flex items-center justify-center w-10 h-10 hover:bg-transparent-10 duration-300 cursor-pointer' onClick={() => changeThemeMode('light')}>
 							<DarkModeOutlinedIcon className='fill-white' />
 						</div>
 					) : (
-						<div className='rounded-full flex items-center justify-center w-10 h-10 bg-white hover:bg-gray-200 duration-300 cursor-pointer' onClick={() => setTheme('dark')}>
+						<div className='rounded-full flex items-center justify-center w-10 h-10 bg-white hover:bg-gray-200 duration-300 cursor-pointer' onClick={() => changeThemeMode('dark')}>
 							<LightModeOutlinedIcon className='fill-dark' />
 						</div>
 					)}

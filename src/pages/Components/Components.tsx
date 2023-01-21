@@ -34,6 +34,10 @@ import EmailIcon from '@mui/icons-material/Email';
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { ProgressBarCircle } from '../../components/UI/progressBar/progressBarCircle';
+import { openModal } from '../../components/UI/GlobalComponents/modal/modalSlice';
+import { useDispatch } from 'react-redux';
+import { BarModal } from '../../components/UI/GlobalComponents/barmodal/barmodal';
+import { FormSideBar } from './form/formSidebar';
 
 interface IUsers {
 	name: string;
@@ -67,6 +71,7 @@ export default function Components() {
 		{ value: '7', label: 'Proyecto 7' },
 		{ value: '8', label: 'Proyecto 8' },
 	];
+	const dispatch = useDispatch();
 	const [initialValues, setInitialValues] = useState({
 		user: '',
 	});
@@ -105,6 +110,9 @@ export default function Components() {
 	}, []);
 	return (
 		<MainContainer>
+			{/* <BarModal>
+				<FormSideBar></FormSideBar>
+			</BarModal> */}
 			<div className='container'>
 				<div className='flex mt-10'>
 					<div className=''>
@@ -264,6 +272,19 @@ export default function Components() {
 					</div>
 					<div className='flex mb-4 flex-wrap'>
 						<ButtonOutline className='mb-2 text-white hover:border-info hover:bg-info hover:text-white border-info mr-2 text-info'>Action button</ButtonOutline>
+						<ButtonOutline className='mb-2 text-white hover:border-success hover:bg-success hover:text-white border-success mr-2 text-success'>Action button</ButtonOutline>
+						<ButtonOutline className='mb-2 text-white hover:border-danger hover:bg-danger hover:text-white border-danger mr-2 text-danger'>Action button</ButtonOutline>
+						<ButtonOutline className='mb-2 text-white hover:border-purple-500 hover:bg-purple-500 hover:text-white border-purple-500 mr-2 text-purple-500'>Action button</ButtonOutline>
+					</div>
+					<div className='flex mb-4 flex-wrap'>
+						<ButtonOutline
+							className='mb-2 text-white hover:border-info hover:bg-info hover:text-white border-info mr-2 text-info'
+							onClick={() => {
+								dispatch(openModal());
+							}}
+						>
+							Open Modal
+						</ButtonOutline>
 						<ButtonOutline className='mb-2 text-white hover:border-success hover:bg-success hover:text-white border-success mr-2 text-success'>Action button</ButtonOutline>
 						<ButtonOutline className='mb-2 text-white hover:border-danger hover:bg-danger hover:text-white border-danger mr-2 text-danger'>Action button</ButtonOutline>
 						<ButtonOutline className='mb-2 text-white hover:border-purple-500 hover:bg-purple-500 hover:text-white border-purple-500 mr-2 text-purple-500'>Action button</ButtonOutline>

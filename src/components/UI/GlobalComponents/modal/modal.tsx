@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import { IconMask } from '../../inputs/styled/IconDownStyleSelect';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeModal } from './modalSlice';
 interface IModalProps {
 	className?: string;
 	children: any;
@@ -73,17 +75,15 @@ export const ModalStyled = styled.div`
 `;
 
 export const Modal = ({ children, className, ...rest }: IModalProps) => {
-	const [stateModal, setStateModal] = useState<string>('open');
-	const closeModal = () => {
-		setStateModal('close');
-	};
+	const modalActive = useSelector((state: any) => state.modalSlice.modalActive);
+	const dispatch = useDispatch();
 	return (
-		<ModalStyled className={'modal ' + stateModal + (className ? className : '')} {...rest}>
+		<ModalStyled className={'modal ' + modalActive + ' ' + (className ? className : '')} {...rest}>
 			<div className='content-modal bg-white'>
 				<IconMask
 					className='icon-close bg-black w-5 h-5 cursor-pointer'
 					onClick={() => {
-						closeModal();
+						dispatch(closeModal());
 					}}
 				></IconMask>
 				{children}

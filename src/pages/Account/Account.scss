@@ -1,16 +1,18 @@
-@media (prefers-color-scheme: dark) {
-	:root {
-		--body-bg: #160a1d;
-	}
+:root {
+	--body-bg: #160a1d;
 }
 .auth-page {
 	width: 100%;
 	height: 100vh;
 	display: flex;
 	flex-direction: row;
-	background-color: var(--body-bg);
+	&.dark {
+		background-color: var(--body-bg);
+	}
 	.auth-brand {
 		width: 10rem;
+		top: 6rem;
+		position: relative;
 	}
 	.bg-auth {
 		width: 100%;

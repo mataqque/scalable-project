@@ -13,6 +13,7 @@ import { ButtonSubmit } from './components/ButtonSubmit.styled';
 import eye from '../../../assets/images/Account/icons/eye-svg.svg?url';
 import { LinkComponentRegister, ShowErrorLogin } from '../components/linkcomponent';
 import { FormStyled } from '../../../components/UI/GlobalComponents/Form/form';
+import { TitleH1 } from '../../../components/UI/titles/h1';
 
 export const Login: React.FunctionComponent = () => {
 	const dispatch = useDispatch();
@@ -51,7 +52,7 @@ export const Login: React.FunctionComponent = () => {
 				<title>Login</title>
 			</Helmet>
 			<main className='login'>
-				<h1 className='text-center c-letter title  '>Acceder a plataforma</h1>
+				<TitleH1 className='text-center text-letter'>Acceder a plataforma</TitleH1>
 				<p className='paragraph text-center mb-4'>Ingresa tu datos para iniciar sesión</p>
 				<FormContainer initialValues={initialValues} validationSchema={LoginSchema} onSubmit={handleSubmit}>
 					{(form: any) => {
@@ -71,7 +72,7 @@ export const Login: React.FunctionComponent = () => {
 				</FormContainer>
 				<LinkComponentRegister />
 				<ShowErrorLogin error={error} />
-				<Link to='/account/password-recovery' className='reset-password   border rounded-full px-4 py-2'>
+				<Link to='/account/password-recovery' className='reset-password border rounded-full px-4 py-2'>
 					Olvidaste tu contraseña
 				</Link>
 			</main>

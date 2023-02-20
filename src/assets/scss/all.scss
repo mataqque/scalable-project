@@ -127,3 +127,9 @@ html {
 		color: var(--letterModeDark);
 	}
 }
+//iamge
+.img-expand {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
